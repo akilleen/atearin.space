@@ -40,5 +40,6 @@ jobs:
       - name: Run Hugo and Deploy
         run: |
           cd atearinspace
+          ls -l
           hugo
           neocities push public
