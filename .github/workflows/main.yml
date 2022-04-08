@@ -35,7 +35,7 @@ jobs:
         run: |
           sudo gem install neocities
           mkdir -p ~/.config/neocities
-          echo ${{ secrets.NEOCITIES_KEY }} > ~/.config/neocities/config
+          echo -n ${{ secrets.NEOCITIES_KEY }} > ~/.config/neocities/config
 
       - name: Run Hugo and Deploy
         run: |
