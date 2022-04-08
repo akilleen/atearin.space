@@ -33,7 +33,7 @@ jobs:
 
       - name: Install neocities gem
         run: |
-        gem install neocities
+          gem install neocities
 
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
