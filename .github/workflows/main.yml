@@ -24,7 +24,7 @@ jobs:
 
       - name: Run Hugo and Deploy
         run: |
-          ls -l
+          cd atearinspace
           hugo
       
       - name: Deploy to Neocities
