@@ -5,7 +5,7 @@ name: deploy
 # Controls when the workflow will run
 on:
   push:
-    branches: [ main, use-marketplace-actions ]
+    branches: [ main ]
   workflow_dispatch:
 
 jobs:
@@ -22,8 +22,8 @@ jobs:
         with:
           hugo-version: 0.97.0
 
-      - name: Run Hugo and Deploy
-        run: hugo
+      - name: Run Hugo
+        run: hugo -v
       
       - name: Deploy to Neocities
         uses: bcomnes/deploy-to-neocities@v1
