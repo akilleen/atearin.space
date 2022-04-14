@@ -23,7 +23,9 @@ jobs:
           hugo-version: 0.97.0
 
       - name: Run Hugo and Deploy
-        run: hugo
+        run: |
+        ls -l
+        hugo
       
       - name: Deploy to Neocities
         uses: bcomnes/deploy-to-neocities@v1
