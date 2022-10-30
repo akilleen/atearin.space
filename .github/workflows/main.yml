@@ -25,10 +25,19 @@ jobs:
       - name: Run Hugo
         run: hugo -v
       
-      - name: Deploy to Neocities
-        uses: bcomnes/deploy-to-neocities@v1
+      ##- name: Deploy to Neocities
+      ##  uses: bcomnes/deploy-to-neocities@v1
+      ##  with:
+      ##    api_token: ${{ secrets.NEOCITIES_KEY }}
+      ##    cleanup: false
+      ##    dist_dir: public
+      - name: Deploy to S3
+        uses: jakejarvis/s3-sync-action@master
         with:
-          api_token: ${{ secrets.NEOCITIES_KEY }}
-          cleanup: false
-          dist_dir: public
+          args: --acl public-read --follow-symlinks --delete
+        env:
+          AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET }}
+          SOURCE_DIR: public
 
