@@ -1,8 +1,5 @@
-# This is a basic workflow to help you get started with Actions
-
 name: deploy
 
-# Controls when the workflow will run
 on:
   push:
     branches: [ main ]
@@ -25,12 +22,6 @@ jobs:
       - name: Run Hugo
         run: hugo -v
       
-      ##- name: Deploy to Neocities
-      ##  uses: bcomnes/deploy-to-neocities@v1
-      ##  with:
-      ##    api_token: ${{ secrets.NEOCITIES_KEY }}
-      ##    cleanup: false
-      ##    dist_dir: public
       - name: Deploy to S3
         uses: jakejarvis/s3-sync-action@master
         with:
