@@ -1,4 +1,4 @@
-baseURL = 'http://atearin.space/'
+baseURL = 'https://atearin.space/'
 languageCode = 'en-us'
 title = 'A Tear in Space'
 theme = 'terminal'
