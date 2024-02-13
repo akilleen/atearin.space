@@ -31,3 +31,9 @@ url = "https://github.com/akilleen"
 key = 1
 name = "mastodon"
 url = "https://todon.eu/@atearinspace"
+rel = "me"
+
+[[params.social]]
+key = 2
+name = "bandcamp"
+url = "https://bandcamp.com/atearinspace"
