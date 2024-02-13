@@ -17,6 +17,7 @@ paginate = 5
 [params]
 user = "adam"
 hostname = "atearin.space"
+author.name = "A Tear in Space"
 
 readingTime = true  # Show reading time on post page
 published = true  # Show published data on post page
