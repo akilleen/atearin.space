@@ -1,88 +1,32 @@
 baseURL = 'https://atearin.space/'
 languageCode = 'en-us'
 title = 'A Tear in Space'
-theme = 'terminal'
+theme = 'nightfall'
 paginate = 5
 
+[menu]
+  [[menu.header]]
+    name = "blog"
+    weight = 0
+    url = "blog"
+  [[menu.header]]
+    name = "about"
+    weight = 1
+    url = "about"
+
 [params]
-  # dir name of your main content (default is `content/posts`).
-  # the list of set content will show up on your index page (baseurl).
-  contentTypeName = "posts"
+user = "adam"
+hostname = "atearin.space"
 
-  # ["orange", "blue", "red", "green", "pink"]
-  themeColor = "orange"
+readingTime = true  # Show reading time on post page
+published = true  # Show published data on post page
 
-  # if you set this to 0, only submenu trigger will be visible
-  showMenuItems = 2
+[[params.social]]
+key = 0
+name = "github"
+url = "https://github.com/akilleen"
 
-  # show selector to switch language
-  showLanguageSelector = false
-
-  # set theme to full screen width
-  fullWidthTheme = false
-
-  # center theme with default width
-  centerTheme = true
-
-  # if your resource directory contains an image called `cover.(jpg|png|webp)`,
-  # then the file will be used as a cover automatically.
-  # With this option you don't have to put the `cover` param in a front-matter.
-  autoCover = true
-
-  # set post to show the last updated
-  # If you use git, you can set `enableGitInfo` to `true` and then post will automatically get the last updated
-  showLastUpdated = false
-
-  # set a custom favicon (default is a `themeColor` square)
-  # favicon = "favicon.ico"
-
-  # Provide a string as a prefix for the last update date. By default, it looks like this: 2020-xx-xx [Updated: 2020-xx-xx] :: Author
-  # updatedDatePrefix = "Updated"
-
-  # set all headings to their default size (depending on browser settings)
-  # oneHeadingSize = true # default
-
-  # whether to show a page's estimated reading time
-  # readingTime = false # default
-
-  # whether to show a table of contents
-  # can be overridden in a page's front-matter
-  # Toc = false # default
-
-  # set title for the table of contents
-  # can be overridden in a page's front-matter
-  # TocTitle = "Table of Contents" # default
-
-
-[languages]
-  [languages.en]
-    languageName = "English"
-    title = "A Tear in Space"
-    subtitle = "A simple, retro theme for Hugo"
-    owner = ""
-    keywords = ""
-    copyright = ""
-    menuMore = "Show more"
-    readMore = "Read more"
-    readOtherPosts = "Read other posts"
-    newerPosts = "Newer posts"
-    olderPosts = "Older posts"
-    missingContentMessage = "Page not found..."
-    missingBackButtonLabel = "Back to home page"
-
-    [languages.en.params.logo]
-      logoText = "A Tear in Space"
-      logoHomeLink = "/"
-
-    #[languages.en.menu]
-      #[[languages.en.menu.main]]
-        #identifier = "about"
-        #name = "About"
-        #url = "/about"
-      #[[languages.en.menu.main]]
-        #identifier = "showcase"
-        #name = "Showcase"
-        #url = "/showcase"
-
-[markup.goldmark.renderer]
-unsafe = true
+[[params.social]]
+key = 1
+name = "mastodon"
+url = "https://todon.eu/@atearinspace"
