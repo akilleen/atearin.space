@@ -30,7 +30,7 @@ jobs:
           username: ${{ secrets.WEBDAV_USER }}
           password: ${{ secrets.WEBDAV_PASSWORD }}
           local: public
-          remote: sites/atearinspace
+          remote: akilleen.fastmail.com/files/sites/atearinspace
             
       #- name: Deploy to S3
       #  uses: jakejarvis/s3-sync-action@master
