@@ -34,6 +34,11 @@ url = "https://todon.eu/@atearinspace"
 rel = "me"
 
 [[params.social]]
+key = 1
+name = "bsky"
+url = "https://bsky.app/profile/atearinspace.bsky.social"
+
+[[params.social]]
 key = 2
 name = "bandcamp"
 url = "https://bandcamp.com/atearinspace"
