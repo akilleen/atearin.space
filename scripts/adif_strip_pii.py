@@ -52,6 +52,8 @@ SAFE_FIELDS = {
     "MY_SIG_INFO",
     "SIG",
     "SIG_INFO",
+    "GRIDSQUARE",
+    "MY_GRIDSQUARE",
     "DXCC",
     "COUNTRY",
     "CONT",
