@@ -139,6 +139,7 @@
 
   function isSameOrigin(url) {
     if (!url) return false;
+    if (url.startsWith('//')) return false;
     if (url.startsWith('/') || url.startsWith('./') || url.startsWith('../')) return true;
     try {
       return new URL(url).origin === window.location.origin;
