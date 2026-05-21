@@ -8,8 +8,24 @@
   var DEFAULT_LON  = -98.35;
   var DEFAULT_ZOOM = 4;
 
+  function isSameOrigin(url) {
+    if (!url) return false;
+    if (url.startsWith('/') || url.startsWith('./') || url.startsWith('../')) return true;
+    try {
+      return new URL(url).origin === window.location.origin;
+    } catch (e) {
+      return false;
+    }
+  }
+
   function initMap(container) {
     var kmlUrl = container.dataset.kmlUrl || '';
+
+    if (kmlUrl && !isSameOrigin(kmlUrl)) {
+      console.warn('osm-map: KML URL must be same-origin, ignoring:', kmlUrl);
+      kmlUrl = '';
+    }
+
     var lat    = parseFloat(container.dataset.lat)          || DEFAULT_LAT;
     var lon    = parseFloat(container.dataset.lon)          || DEFAULT_LON;
     var zoom   = parseInt(container.dataset.zoom, 10) || DEFAULT_ZOOM;

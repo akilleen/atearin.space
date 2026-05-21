@@ -137,8 +137,24 @@
     container.appendChild(table);
   }
 
+  function isSameOrigin(url) {
+    if (!url) return false;
+    if (url.startsWith('/') || url.startsWith('./') || url.startsWith('../')) return true;
+    try {
+      return new URL(url).origin === window.location.origin;
+    } catch (e) {
+      return false;
+    }
+  }
+
   async function loadAdifTable(container) {
     const url = container.dataset.adifUrl;
+    if (!isSameOrigin(url)) {
+      const msg = document.createElement('p');
+      msg.textContent = 'ADIF log must be served from the same site.';
+      container.appendChild(msg);
+      return;
+    }
     const columns = (container.dataset.columns || 'date,time,call,band,mode,rst')
       .split(',')
       .map(function (c) { return c.trim(); })
