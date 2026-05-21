@@ -156,7 +156,9 @@
       const records = parseAdif(text);
       renderTable(container, records, columns, caption);
     } catch (err) {
-      container.innerHTML = '<p>Failed to load log: ' + err.message + '</p>';
+      const msg = document.createElement('p');
+      msg.textContent = 'Failed to load log: ' + err.message;
+      container.appendChild(msg);
     }
   }
 
