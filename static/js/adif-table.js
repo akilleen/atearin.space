@@ -91,8 +91,9 @@
       case 'rst':     return deriveRst(record);
       case 'name':    return record.NAME || '—';
       case 'comment': return record.COMMENT || '—';
-      case 'siginfo': return deriveSigInfo(record);
-      default:        return record[col.toUpperCase()] || '—';
+      case 'siginfo':    return deriveSigInfo(record);
+      case 'gridsquare': return (record.GRIDSQUARE || '—').toUpperCase();
+      default:           return record[col.toUpperCase()] || '—';
     }
   }
 
