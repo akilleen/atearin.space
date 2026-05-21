@@ -2,15 +2,15 @@
 
 (function () {
   const COLUMN_HEADERS = {
-    date:    'Date',
-    time:    'Time (UTC)',
-    call:    'Callsign',
-    band:    'Band',
-    mode:    'Mode',
-    rst:     'RST',
-    name:    'Name',
-    comment: 'Comment',
-    siginfo: 'Program',
+    date:       'Date',
+    time:       'Time (UTC)',
+    gridsquare: 'Grid',
+    band:       'Band',
+    mode:       'Mode',
+    rst:        'RST',
+    name:       'Name',
+    comment:    'Comment',
+    siginfo:    'Program',
   };
 
   function parseAdif(text) {

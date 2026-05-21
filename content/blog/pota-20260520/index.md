@@ -17,4 +17,4 @@ Yesterday I did my first POTA of the year. It was also my first time taking my T
 
 ## Logbook
 
-{{< adif-table file="./20260520_pota.adi" columns="date,time,call,band,mode,rst" caption="US-3313 QSOs — 2026-05-20" >}}
+{{< adif-table file="./20260520_pota.adi" columns="date,time,gridsquare,band,mode,rst" caption="US-3313 QSOs — 2026-05-20" >}}
