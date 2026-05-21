@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <name>Sample POTA Activation — K-4564</name>
+    <Placemark>
+      <name>Activation Site</name>
+      <description>POTA K-4564 activation point</description>
+      <Point>
+        <coordinates>-93.2650,44.9778,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Track</name>
+      <LineString>
+        <tessellate>1</tessellate>
+        <coordinates>
+          -93.2700,44.9750,0
+          -93.2680,44.9760,0
+          -93.2660,44.9770,0
+          -93.2650,44.9778,0
+          -93.2640,44.9785,0
+          -93.2630,44.9790,0
+        </coordinates>
+      </LineString>
+    </Placemark>
+  </Document>
+</kml>

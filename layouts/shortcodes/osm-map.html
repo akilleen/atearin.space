@@ -1,0 +1,17 @@
+{{ $kml := .Get "kml" | default "" }}
+{{ $height := .Get "height" | default "400px" }}
+{{ $lat := .Get "lat" | default "0" }}
+{{ $lon := .Get "lon" | default "0" }}
+{{ $zoom := .Get "zoom" | default "4" }}
+{{ $class := .Get "class" | default "" }}
+{{ $id := printf "ham-osm-map-%d" .Ordinal }}
+
+<div
+  id="{{ $id }}"
+  class="ham-osm-map{{ with $class }} {{ . }}{{ end }}"
+  data-kml-url="{{ $kml }}"
+  data-lat="{{ $lat }}"
+  data-lon="{{ $lon }}"
+  data-zoom="{{ $zoom }}"
+  style="height: {{ $height }}"
+></div>
