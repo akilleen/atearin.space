@@ -1,0 +1,491 @@
+#!/usr/bin/env python3
+"""
+adif_logger.py — Interactive ADIF log entry or CSV import.
+
+Interactive:
+    python3 scripts/adif_logger.py
+    python3 scripts/adif_logger.py output.adi
+    python3 scripts/adif_logger.py --date 20260520
+
+CSV import:
+    python3 scripts/adif_logger.py --csv log.csv
+    python3 scripts/adif_logger.py --csv log.csv --output 20260520_pota.adi
+"""
+
+import argparse
+import csv
+import json
+import sys
+from datetime import datetime, timezone
+from pathlib import Path
+from urllib.request import urlopen
+from urllib.error import URLError
+
+
+# ── constants ─────────────────────────────────────────────────────────────────
+
+BAND_MAP = [
+    (1.8,    2.0,    '160m'),
+    (3.5,    4.0,    '80m'),
+    (5.3,    5.4,    '60m'),
+    (7.0,    7.3,    '40m'),
+    (10.1,   10.15,  '30m'),
+    (14.0,   14.35,  '20m'),
+    (18.068, 18.168, '17m'),
+    (21.0,   21.45,  '15m'),
+    (24.89,  24.99,  '12m'),
+    (28.0,   29.7,   '10m'),
+    (50.0,   54.0,   '6m'),
+    (144.0,  148.0,  '2m'),
+    (430.0,  450.0,  '70cm'),
+]
+
+CALLOOK_URL = 'https://callook.info/{}/json'
+POTA_URL    = 'https://api.pota.app/park/{}'
+
+
+# ── API helpers ───────────────────────────────────────────────────────────────
+
+def lookup_callsign(call):
+    """
+    Query callook.info (US FCC data, no auth required).
+    Returns dict with 'gridsquare' key, or None on failure/non-US call.
+    """
+    try:
+        with urlopen(CALLOOK_URL.format(call.upper()), timeout=5) as resp:
+            data = json.loads(resp.read().decode())
+        if data.get('status') == 'VALID':
+            loc = data.get('location', {})
+            return {'gridsquare': loc.get('gridsquare', '')}
+    except (URLError, json.JSONDecodeError, KeyError):
+        pass
+    return None
+
+
+def lookup_pota_park(ref):
+    """
+    Query the POTA public API for a park reference.
+    Returns dict with 'name' and 'grid6' keys, or None.
+    """
+    try:
+        with urlopen(POTA_URL.format(ref.upper()), timeout=5) as resp:
+            data = json.loads(resp.read().decode())
+        if isinstance(data, dict) and data.get('reference'):
+            return {
+                'name':  data.get('name', ''),
+                'grid6': data.get('grid6') or data.get('grid4', ''),
+            }
+    except (URLError, json.JSONDecodeError, KeyError):
+        pass
+    return None
+
+
+# ── band / time helpers ───────────────────────────────────────────────────────
+
+def freq_to_band(freq_str):
+    try:
+        f = float(freq_str)
+    except (TypeError, ValueError):
+        return None
+    for lo, hi, band in BAND_MAP:
+        if lo <= f <= hi:
+            return band
+    return None
+
+
+def parse_rst(raw):
+    """Accept '59', '59/57', or '59 57'. Returns (sent, rcvd)."""
+    raw = raw.strip()
+    if '/' in raw:
+        parts = [p.strip() for p in raw.split('/', 1)]
+    elif ' ' in raw:
+        parts = raw.split(None, 1)
+    else:
+        parts = [raw, raw]
+    sent = parts[0] if parts[0] else '59'
+    rcvd = parts[1] if len(parts) > 1 and parts[1] else '59'
+    return sent, rcvd
+
+
+def parse_time(raw):
+    """Validate HHMM or HH:MM → HHMM string, or None."""
+    clean = raw.replace(':', '').strip()
+    if len(clean) == 4 and clean.isdigit():
+        h, m = int(clean[:2]), int(clean[2:])
+        if 0 <= h <= 23 and 0 <= m <= 59:
+            return clean
+    return None
+
+
+def utc_now_time():
+    return datetime.now(timezone.utc).strftime('%H%M')
+
+
+def utc_today():
+    return datetime.now(timezone.utc).strftime('%Y%m%d')
+
+
+# ── prompting helpers ─────────────────────────────────────────────────────────
+
+def prompt(label, default=None, required=True):
+    """
+    Display a prompt. Press Enter to accept the default.
+    Loops until a value is provided if required=True and no default.
+    """
+    hint = f' [{default}]' if default is not None else ''
+    while True:
+        try:
+            raw = input(f'{label}{hint}: ').strip()
+        except (EOFError, KeyboardInterrupt):
+            print()
+            sys.exit(0)
+        if raw:
+            return raw
+        if default is not None:
+            return str(default)
+        if not required:
+            return ''
+        print('  (required — please enter a value)')
+
+
+def prompt_yn(question, default='y'):
+    hint = 'Y/n' if default == 'y' else 'y/N'
+    try:
+        raw = input(f'{question} [{hint}]: ').strip().lower()
+    except (EOFError, KeyboardInterrupt):
+        print()
+        sys.exit(0)
+    if not raw:
+        return default == 'y'
+    return raw.startswith('y')
+
+
+# ── ADIF writer ───────────────────────────────────────────────────────────────
+
+def adif_field(name, value):
+    value = str(value)
+    return f'<{name}:{len(value)}>{value}'
+
+
+def write_adif(path, session, contacts):
+    now = datetime.now(timezone.utc).strftime('%Y%m%d %H%M%S')
+    lines = [
+        f'ADIF log generated by adif_logger.py on {now} UTC',
+        adif_field('ADIF_VER', '3.1.4'),
+        adif_field('CREATED_TIMESTAMP', now.replace(' ', 'T') + 'Z'),
+        adif_field('PROGRAMID', 'adif_logger'),
+        '<EOH>',
+        '',
+    ]
+
+    for c in contacts:
+        rec = [
+            adif_field('CALL',     c['call']),
+            adif_field('QSO_DATE', c['date']),
+            adif_field('TIME_ON',  c['time']),
+            adif_field('FREQ',     c['freq']),
+            adif_field('BAND',     c['band']),
+            adif_field('MODE',     c['mode']),
+        ]
+        if c.get('rst_sent'):
+            rec.append(adif_field('RST_SENT', c['rst_sent']))
+        if c.get('rst_rcvd'):
+            rec.append(adif_field('RST_RCVD', c['rst_rcvd']))
+        if c.get('gridsquare'):
+            rec.append(adif_field('GRIDSQUARE', c['gridsquare']))
+        if c.get('sig_info'):
+            rec.append(adif_field('SIG',      'POTA'))
+            rec.append(adif_field('SIG_INFO', c['sig_info']))
+        if session.get('my_call'):
+            rec.append(adif_field('STATION_CALLSIGN', session['my_call']))
+        if session.get('my_gridsquare'):
+            rec.append(adif_field('MY_GRIDSQUARE', session['my_gridsquare']))
+        if session.get('my_sig_info'):
+            rec.append(adif_field('MY_SIG',      'POTA'))
+            rec.append(adif_field('MY_SIG_INFO', session['my_sig_info']))
+        rec.append('<EOR>')
+        lines.append(' '.join(rec))
+        lines.append('')
+
+    path.write_text('\n'.join(lines), encoding='utf-8')
+
+
+# ── session setup (shared by both modes) ──────────────────────────────────────
+
+def setup_session(date_override=None):
+    print('\n── Session Setup ──────────────────────────────────────')
+    session = {}
+
+    session['my_call'] = prompt('Your call sign').upper()
+    session['date']    = date_override or prompt('Date (YYYYMMDD)', default=utc_today())
+    session['default_mode'] = prompt('Default mode', default='SSB').upper()
+
+    park_ref = prompt('Activation park ref (e.g. US-3313, blank to skip)',
+                      default='', required=False)
+    if park_ref:
+        park_ref = park_ref.upper()
+        print(f'  Looking up {park_ref} ...', end=' ', flush=True)
+        park = lookup_pota_park(park_ref)
+        if park:
+            print(f"found: {park['name']}  grid {park['grid6']}")
+            session['my_sig_info']   = park_ref
+            session['my_gridsquare'] = prompt('Your grid square',
+                                              default=park['grid6'])
+        else:
+            print('not found in POTA database.')
+            session['my_sig_info']   = park_ref
+            session['my_gridsquare'] = prompt('Your grid square',
+                                              default='', required=False)
+    else:
+        session['my_gridsquare'] = prompt('Your grid square',
+                                          default='', required=False)
+
+    print('───────────────────────────────────────────────────────\n')
+    return session
+
+
+# ── interactive mode ──────────────────────────────────────────────────────────
+
+def run_interactive(session):
+    contacts = []
+    print('Type a call sign to log a contact.')
+    print('Commands: done  undo  list  quit\n')
+
+    while True:
+        raw = prompt(f'[#{len(contacts) + 1}] Call sign')
+        cmd = raw.lower()
+
+        if cmd in ('done', 'q', 'd'):
+            break
+
+        if cmd == 'quit':
+            if not prompt_yn('Quit without saving?', default='n'):
+                continue
+            sys.exit(0)
+
+        if cmd == 'undo':
+            if contacts:
+                gone = contacts.pop()
+                print(f'  Removed: {gone["call"]}')
+            else:
+                print('  Nothing to undo.')
+            continue
+
+        if cmd == 'list':
+            _print_preview(contacts)
+            continue
+
+        call = raw.upper()
+
+        # Grid square lookup
+        print(f'  Looking up {call} ...', end=' ', flush=True)
+        info = lookup_callsign(call)
+        if info and info.get('gridsquare'):
+            print(f"grid {info['gridsquare']}")
+            gridsquare = prompt('  Grid square', default=info['gridsquare'])
+        else:
+            print('not found (US-only lookup).')
+            gridsquare = prompt('  Grid square', default='', required=False)
+
+        rst_raw   = prompt('  RST sent/rcvd', default='59/59')
+        rst_sent, rst_rcvd = parse_rst(rst_raw)
+
+        freq      = prompt('  Frequency (MHz)')
+        band      = freq_to_band(freq)
+        if band:
+            print(f'  → Band: {band}')
+        else:
+            print(f'  Could not derive band from "{freq}"')
+            band = prompt('  Band', default='')
+
+        time_raw  = prompt('  Time UTC (HHMM)', default=utc_now_time())
+        time_val  = parse_time(time_raw)
+        while not time_val:
+            print('  Invalid — use HHMM format.')
+            time_raw = prompt('  Time UTC (HHMM)', default=utc_now_time())
+            time_val = parse_time(time_raw)
+
+        sig_info  = prompt('  P2P park ref', default='', required=False).upper()
+        mode      = prompt('  Mode', default=session['default_mode']).upper()
+
+        contact = {
+            'call':       call,
+            'date':       session['date'],
+            'time':       time_val,
+            'freq':       freq,
+            'band':       band,
+            'mode':       mode,
+            'rst_sent':   rst_sent,
+            'rst_rcvd':   rst_rcvd,
+            'gridsquare': gridsquare.upper() if gridsquare else '',
+            'sig_info':   sig_info,
+        }
+        contacts.append(contact)
+
+        p2p = f'  P2P {sig_info}' if sig_info else ''
+        print(f'  ✓ {call}  {gridsquare or "—"}  {band}  {mode}  {time_val}z'
+              f'  RST {rst_sent}/{rst_rcvd}{p2p}\n')
+
+    return contacts
+
+
+# ── CSV import mode ───────────────────────────────────────────────────────────
+
+def run_csv(csv_path, session):
+    with open(csv_path, newline='', encoding='utf-8') as f:
+        reader = csv.DictReader(f)
+        rows = [{k.lower().strip(): (v or '').strip()
+                 for k, v in row.items()}
+                for row in reader]
+
+    if not rows:
+        print('Error: CSV file is empty.', file=sys.stderr)
+        sys.exit(1)
+
+    print(f'Importing {len(rows)} row(s) from {csv_path.name} ...\n')
+
+    contacts = []
+    errors   = []
+
+    for i, row in enumerate(rows, start=2):
+        call = row.get('call', '').upper()
+        if not call:
+            errors.append(f'Row {i}: missing call sign — skipped')
+            continue
+
+        freq = row.get('freq', '')
+        if not freq:
+            errors.append(f'Row {i} ({call}): missing freq — skipped')
+            continue
+
+        band = freq_to_band(freq)
+        if not band:
+            errors.append(f'Row {i} ({call}): cannot derive band from "{freq}"')
+            band = row.get('band', '')
+
+        # Grid square: prefer CSV column, then API lookup
+        gridsquare = row.get('gridsquare', '').upper()
+        if not gridsquare:
+            print(f'  {call}: looking up ...', end=' ', flush=True)
+            info = lookup_callsign(call)
+            if info and info.get('gridsquare'):
+                gridsquare = info['gridsquare'].upper()
+                print(f'grid {gridsquare}')
+            else:
+                print('not found')
+
+        rst_raw  = row.get('rst_sent') or row.get('rst') or '59/59'
+        rst_sent, rst_rcvd_default = parse_rst(rst_raw)
+        rst_rcvd = row.get('rst_rcvd') or rst_rcvd_default
+
+        time_raw = row.get('time', '')
+        time_val = parse_time(time_raw) if time_raw else None
+        if not time_val:
+            time_val = utc_now_time()
+
+        # Accept ISO date (2026-05-20) or compact (20260520)
+        date_val = row.get('date', '') or session['date']
+        date_val = date_val.replace('-', '')
+
+        sig_info = row.get('park', '').upper()
+        mode     = row.get('mode', '').upper() or session['default_mode']
+
+        contacts.append({
+            'call':       call,
+            'date':       date_val,
+            'time':       time_val,
+            'freq':       freq,
+            'band':       band,
+            'mode':       mode,
+            'rst_sent':   rst_sent,
+            'rst_rcvd':   rst_rcvd,
+            'gridsquare': gridsquare,
+            'sig_info':   sig_info,
+        })
+
+    if errors:
+        print('\nWarnings / errors:')
+        for e in errors:
+            print(f'  ✗ {e}')
+        print()
+        if not contacts:
+            print('No valid contacts to import.')
+            sys.exit(1)
+        if not prompt_yn(f'Continue with {len(contacts)} valid contact(s)?'):
+            sys.exit(0)
+
+    return contacts
+
+
+# ── shared preview ────────────────────────────────────────────────────────────
+
+def _print_preview(contacts):
+    if not contacts:
+        print('  No contacts yet.')
+        return
+    hdr = f'  {"#":<4} {"Call":<10} {"Grid":<8} {"Band":<6} {"Mode":<6} {"Date":<10} {"Time":<6} {"RST":<10} P2P Park'
+    print(hdr)
+    print('  ' + '─' * (len(hdr) - 2))
+    for i, c in enumerate(contacts, 1):
+        rst = f'{c.get("rst_sent","")}/{c.get("rst_rcvd","")}'
+        print(f'  {i:<4} {c["call"]:<10} {c.get("gridsquare","—"):<8}'
+              f' {c["band"]:<6} {c["mode"]:<6} {c["date"]:<10}'
+              f' {c["time"]:<6} {rst:<10} {c.get("sig_info","")}')
+    print()
+
+
+# ── main ──────────────────────────────────────────────────────────────────────
+
+def main():
+    parser = argparse.ArgumentParser(
+        description='Interactive ADIF log entry or CSV import.',
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+    )
+    parser.add_argument('output', nargs='?',
+                        help='Output .adi file (default: YYYYMMDD_<callsign>.adi)')
+    parser.add_argument('--csv',    metavar='FILE',
+                        help='Import contacts from a CSV instead of interactive entry')
+    parser.add_argument('--output', dest='output_flag', metavar='FILE',
+                        help='Output .adi file (alternative to positional arg)')
+    parser.add_argument('--date',   metavar='YYYYMMDD',
+                        help='Override activation date (default: today UTC)')
+    args = parser.parse_args()
+
+    output_arg = args.output_flag or args.output
+
+    session = setup_session(date_override=args.date)
+
+    if args.csv:
+        csv_path = Path(args.csv)
+        if not csv_path.is_file():
+            print(f'Error: CSV not found: {csv_path}', file=sys.stderr)
+            sys.exit(1)
+        contacts = run_csv(csv_path, session)
+        _print_preview(contacts)
+        if not prompt_yn(f'Write {len(contacts)} contact(s) to ADIF?'):
+            sys.exit(0)
+    else:
+        contacts = run_interactive(session)
+        if not contacts:
+            print('No contacts logged. Exiting.')
+            sys.exit(0)
+        print_final = len(contacts) > 1  # skip redundant single-contact preview
+        if print_final:
+            _print_preview(contacts)
+
+    # Resolve output path
+    if output_arg:
+        out = Path(output_arg)
+    else:
+        slug = session['my_call'].lower().replace('/', '-')
+        out  = Path(f"{session['date']}_{slug}.adi")
+
+    if out.exists() and not prompt_yn(f'{out} already exists. Overwrite?', default='n'):
+        out = Path(prompt('Enter a different filename'))
+
+    write_adif(out, session, contacts)
+    print(f'\nWrote {len(contacts)} QSO(s) → {out}')
+
+
+if __name__ == '__main__':
+    main()
