@@ -26,6 +26,9 @@
       kmlUrl = '';
     }
 
+    var height = container.dataset.height || '400px';
+    container.style.height = height;
+
     var lat    = parseFloat(container.dataset.lat)          || DEFAULT_LAT;
     var lon    = parseFloat(container.dataset.lon)          || DEFAULT_LON;
     var zoom   = parseInt(container.dataset.zoom, 10) || DEFAULT_ZOOM;
