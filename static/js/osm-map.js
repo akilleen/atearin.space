@@ -8,6 +8,15 @@
   var DEFAULT_LON  = -98.35;
   var DEFAULT_ZOOM = 4;
 
+  // Explicitly set marker image paths for self-hosted Leaflet.
+  // Without this, Leaflet tries to auto-detect from the script URL and fails.
+  delete L.Icon.Default.prototype._getIconUrl;
+  L.Icon.Default.mergeOptions({
+    iconUrl:       '/vendor/leaflet/marker-icon.png',
+    iconRetinaUrl: '/vendor/leaflet/marker-icon-2x.png',
+    shadowUrl:     '/vendor/leaflet/marker-shadow.png',
+  });
+
   function isSameOrigin(url) {
     if (!url) return false;
     if (url.startsWith('//')) return false;
