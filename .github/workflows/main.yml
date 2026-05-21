@@ -21,7 +21,7 @@ jobs:
           extended: true
 
       - name: Run Hugo
-        run: hugo -v
+        run: hugo --logLevel info
       
       - name: Deploy via WebDAV
         uses: XPH0816/webdav-deploy-action@v0.3
