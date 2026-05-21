@@ -65,7 +65,7 @@
     </Point>
   </Placemark>
   <Placemark>
-    <name>EN62WT32</name>
+    <name>EN62WT</name>
     <description><![CDATA[<b>Date:</b> 2026-05-20<br/><b>Time:</b> 14:44Z<br/><b>Band:</b> 40m<br/><b>Mode:</b> SSB<br/><b>RST Sent:</b> 59<br/><b>RST Rcvd:</b> 58]]></description>
     <styleUrl>#contact</styleUrl>
     <Point>
@@ -73,7 +73,7 @@
     </Point>
   </Placemark>
   <Placemark>
-    <name>EN90LP89</name>
+    <name>EN90LP</name>
     <description><![CDATA[<b>Date:</b> 2026-05-20<br/><b>Time:</b> 14:45Z<br/><b>Band:</b> 40m<br/><b>Mode:</b> SSB<br/><b>RST Sent:</b> 59<br/><b>RST Rcvd:</b> 55]]></description>
     <styleUrl>#contact</styleUrl>
     <Point>
@@ -113,7 +113,7 @@
     </Point>
   </Placemark>
   <Placemark>
-    <name>EM75LE13</name>
+    <name>EM75LE</name>
     <description><![CDATA[<b>Date:</b> 2026-05-20<br/><b>Time:</b> 14:59Z<br/><b>Band:</b> 40m<br/><b>Mode:</b> SSB<br/><b>RST Sent:</b> 59<br/><b>RST Rcvd:</b> 55]]></description>
     <styleUrl>#contact</styleUrl>
     <Point>
@@ -188,7 +188,7 @@
     </LineString>
   </Placemark>
   <Placemark>
-    <name>Line to EN62WT32</name>
+    <name>Line to EN62WT</name>
     <styleUrl>#line</styleUrl>
     <LineString>
       <tessellate>1</tessellate>
@@ -196,7 +196,7 @@
     </LineString>
   </Placemark>
   <Placemark>
-    <name>Line to EN90LP89</name>
+    <name>Line to EN90LP</name>
     <styleUrl>#line</styleUrl>
     <LineString>
       <tessellate>1</tessellate>
@@ -236,7 +236,7 @@
     </LineString>
   </Placemark>
   <Placemark>
-    <name>Line to EM75LE13</name>
+    <name>Line to EM75LE</name>
     <styleUrl>#line</styleUrl>
     <LineString>
       <tessellate>1</tessellate>

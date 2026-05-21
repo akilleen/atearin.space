@@ -77,14 +77,15 @@ def maidenhead_to_latlon(grid):
         return None
 
 
-def best_coords(fields, lat_key='LAT', lon_key='LON', grid_key='GRIDSQUARE'):
-    """Return (lat, lon) preferring explicit lat/lon, falling back to grid."""
-    if fields.get(lat_key) and fields.get(lon_key):
-        coords = parse_adif_latlon(fields[lat_key], fields[lon_key])
-        if coords:
-            return coords
-    if fields.get(grid_key):
-        return maidenhead_to_latlon(fields[grid_key])
+def best_coords(fields, grid_key='GRIDSQUARE'):
+    """
+    Return (lat, lon) derived from the Maidenhead grid square only.
+    Deliberately ignores precise LAT/LON fields so that published KML
+    coordinates never exceed the ~5 km resolution of a 6-char grid square.
+    """
+    grid = fields.get(grid_key, '')
+    if grid:
+        return maidenhead_to_latlon(grid[:6])
     return None
 
 
@@ -214,9 +215,9 @@ def main():
 
     first = {k: v for k, v in records[0]}
 
-    activation_coords = best_coords(first, 'MY_LAT', 'MY_LON', 'MY_GRIDSQUARE')
+    activation_coords = best_coords(first, grid_key='MY_GRIDSQUARE')
     if not activation_coords:
-        print('Error: no MY_LAT/MY_LON or MY_GRIDSQUARE in first record.', file=sys.stderr)
+        print('Error: no MY_GRIDSQUARE in first record.', file=sys.stderr)
         sys.exit(1)
 
     activation_label = first.get('MY_SIG_INFO') or 'Activation Site'
@@ -225,7 +226,7 @@ def main():
     skipped = 0
     for i, record in enumerate(records, start=1):
         fields = {k: v for k, v in record}
-        label = fields.get('GRIDSQUARE') or f'Contact {i}'
+        label = fields.get('GRIDSQUARE', '')[:6] or f'Contact {i}'
         coords = best_coords(fields)
         if not coords:
             skipped += 1
