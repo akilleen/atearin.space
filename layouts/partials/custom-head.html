@@ -1,0 +1,13 @@
+<meta name="robots" content="noindex, nofollow">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' https://*.tile.openstreetmap.org data:; connect-src 'self'; font-src 'self'; object-src 'none'; frame-src 'none';">
+
+{{ if in (.Params.tags | default slice) "ham-radio" }}
+  {{ $ham := resources.Get "sass/ham-radio.scss" | toCSS | minify | fingerprint }}
+  <link rel="stylesheet" href="{{ $ham.RelPermalink }}">
+  <link rel="stylesheet" href="/vendor/leaflet/leaflet.css">
+  <script defer src="/vendor/leaflet/leaflet.js"></script>
+  <script defer src="/vendor/leaflet/leaflet-omnivore.min.js"></script>
+  <script defer src="/js/adif-table.js"></script>
+  <script defer src="/js/osm-map.js"></script>
+{{ end }}

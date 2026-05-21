@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+<Document>
+  <name>US-3313</name>
+
+  <Style id="activation-site">
+    <IconStyle><color>ff00cc00</color><scale>1.4</scale></IconStyle>
+  </Style>
+  <Style id="contact">
+    <IconStyle><color>ffff7800</color><scale>0.9</scale></IconStyle>
+  </Style>
+  <Style id="line">
+    <LineStyle><color>997800ff</color><width>1.5</width></LineStyle>
+  </Style>
+
+  <Folder><name>Activation Site</name>
+  <Placemark>
+    <name>US-3313</name>
+    <styleUrl>#activation-site</styleUrl>
+    <Point>
+      <coordinates>-83.125,42.47916666666667,0</coordinates>
+    </Point>
+  </Placemark>
+  </Folder>
+
+  <Folder><name>Contacts</name>
+  <Placemark>
+    <name>FN42hv</name>
+    <description><![CDATA[<b>Date:</b> 2026-05-20<br/><b>Time:</b> 14:06Z<br/><b>Band:</b> 40m<br/><b>Mode:</b> SSB<br/><b>RST Sent:</b> 55<br/><b>RST Rcvd:</b> 43<br/><b>POTA/SOTA:</b> US-8023]]></description>
+    <styleUrl>#contact</styleUrl>
+    <Point>
+      <coordinates>-71.375,42.895833,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>FM19eg</name>
+    <description><![CDATA[<b>Date:</b> 2026-05-20<br/><b>Time:</b> 14:20Z<br/><b>Band:</b> 40m<br/><b>Mode:</b> SSB<br/><b>RST Sent:</b> 55<br/><b>RST Rcvd:</b> 57]]></description>
+    <styleUrl>#contact</styleUrl>
+    <Point>
+      <coordinates>-77.625,39.270833,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>EM69wo</name>
+    <description><![CDATA[<b>Date:</b> 2026-05-20<br/><b>Time:</b> 14:22Z<br/><b>Band:</b> 40m<br/><b>Mode:</b> SSB<br/><b>RST Sent:</b> 57<br/><b>RST Rcvd:</b> 55]]></description>
+    <styleUrl>#contact</styleUrl>
+    <Point>
+      <coordinates>-86.125,39.604167,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>EN82js</name>
+    <description><![CDATA[<b>Date:</b> 2026-05-20<br/><b>Time:</b> 14:30Z<br/><b>Band:</b> 40m<br/><b>Mode:</b> SSB<br/><b>RST Sent:</b> 59<br/><b>RST Rcvd:</b> 55<br/><b>POTA/SOTA:</b> US-3321]]></description>
+    <styleUrl>#contact</styleUrl>
+    <Point>
+      <coordinates>-83.208333,42.770833,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>FN41im</name>
+    <description><![CDATA[<b>Date:</b> 2026-05-20<br/><b>Time:</b> 14:37Z<br/><b>Band:</b> 20m<br/><b>Mode:</b> SSB<br/><b>RST Sent:</b> 55<br/><b>RST Rcvd:</b> 53<br/><b>POTA/SOTA:</b> US-11495]]></description>
+    <styleUrl>#contact</styleUrl>
+    <Point>
+      <coordinates>-71.291667,41.520833,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>EN62WT</name>
+    <description><![CDATA[<b>Date:</b> 2026-05-20<br/><b>Time:</b> 14:44Z<br/><b>Band:</b> 40m<br/><b>Mode:</b> SSB<br/><b>RST Sent:</b> 59<br/><b>RST Rcvd:</b> 58]]></description>
+    <styleUrl>#contact</styleUrl>
+    <Point>
+      <coordinates>-86.125,42.8125,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>EN90LP</name>
+    <description><![CDATA[<b>Date:</b> 2026-05-20<br/><b>Time:</b> 14:45Z<br/><b>Band:</b> 40m<br/><b>Mode:</b> SSB<br/><b>RST Sent:</b> 59<br/><b>RST Rcvd:</b> 55]]></description>
+    <styleUrl>#contact</styleUrl>
+    <Point>
+      <coordinates>-81.041667,40.645833,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>FM06jc</name>
+    <description><![CDATA[<b>Date:</b> 2026-05-20<br/><b>Time:</b> 14:46Z<br/><b>Band:</b> 40m<br/><b>Mode:</b> SSB<br/><b>RST Sent:</b> 52<br/><b>RST Rcvd:</b> 52<br/><b>POTA/SOTA:</b> US-1356]]></description>
+    <styleUrl>#contact</styleUrl>
+    <Point>
+      <coordinates>-79.208333,36.104167,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>FN01ku</name>
+    <description><![CDATA[<b>Date:</b> 2026-05-20<br/><b>Time:</b> 14:47Z<br/><b>Band:</b> 40m<br/><b>Mode:</b> SSB<br/><b>RST Sent:</b> 59<br/><b>RST Rcvd:</b> 55]]></description>
+    <styleUrl>#contact</styleUrl>
+    <Point>
+      <coordinates>-79.125,41.854167,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>EN90hu</name>
+    <description><![CDATA[<b>Date:</b> 2026-05-20<br/><b>Time:</b> 14:47Z<br/><b>Band:</b> 40m<br/><b>Mode:</b> SSB<br/><b>RST Sent:</b> 55<br/><b>RST Rcvd:</b> 55]]></description>
+    <styleUrl>#contact</styleUrl>
+    <Point>
+      <coordinates>-81.375,40.854167,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>FN20bh</name>
+    <description><![CDATA[<b>Date:</b> 2026-05-20<br/><b>Time:</b> 14:48Z<br/><b>Band:</b> 40m<br/><b>Mode:</b> SSB<br/><b>RST Sent:</b> 59<br/><b>RST Rcvd:</b> 57]]></description>
+    <styleUrl>#contact</styleUrl>
+    <Point>
+      <coordinates>-75.875,40.3125,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>EM75LE</name>
+    <description><![CDATA[<b>Date:</b> 2026-05-20<br/><b>Time:</b> 14:59Z<br/><b>Band:</b> 40m<br/><b>Mode:</b> SSB<br/><b>RST Sent:</b> 59<br/><b>RST Rcvd:</b> 55]]></description>
+    <styleUrl>#contact</styleUrl>
+    <Point>
+      <coordinates>-85.041667,35.1875,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>FN04ui</name>
+    <description><![CDATA[<b>Date:</b> 2026-05-20<br/><b>Time:</b> 14:59Z<br/><b>Band:</b> 40m<br/><b>Mode:</b> SSB<br/><b>RST Sent:</b> 57<br/><b>RST Rcvd:</b> 53]]></description>
+    <styleUrl>#contact</styleUrl>
+    <Point>
+      <coordinates>-78.291667,44.354167,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>EN82ft</name>
+    <description><![CDATA[<b>Date:</b> 2026-05-20<br/><b>Time:</b> 14:51Z<br/><b>Band:</b> 40m<br/><b>Mode:</b> SSB<br/><b>RST Sent:</b> 59<br/><b>RST Rcvd:</b> 59]]></description>
+    <styleUrl>#contact</styleUrl>
+    <Point>
+      <coordinates>-83.541667,42.8125,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>FM19sb</name>
+    <description><![CDATA[<b>Date:</b> 2026-05-20<br/><b>Time:</b> 14:52Z<br/><b>Band:</b> 40m<br/><b>Mode:</b> SSB<br/><b>RST Sent:</b> 51<br/><b>RST Rcvd:</b> 51<br/><b>POTA/SOTA:</b> US-1595]]></description>
+    <styleUrl>#contact</styleUrl>
+    <Point>
+      <coordinates>-76.458333,39.0625,0</coordinates>
+    </Point>
+  </Placemark>
+  </Folder>
+
+  <Folder><name>Lines</name>
+  <Placemark>
+    <name>Line to FN42hv</name>
+    <styleUrl>#line</styleUrl>
+    <LineString>
+      <tessellate>1</tessellate>
+      <coordinates>-83.125,42.47916666666667,0 -71.375,42.895833,0</coordinates>
+    </LineString>
+  </Placemark>
+  <Placemark>
+    <name>Line to FM19eg</name>
+    <styleUrl>#line</styleUrl>
+    <LineString>
+      <tessellate>1</tessellate>
+      <coordinates>-83.125,42.47916666666667,0 -77.625,39.270833,0</coordinates>
+    </LineString>
+  </Placemark>
+  <Placemark>
+    <name>Line to EM69wo</name>
+    <styleUrl>#line</styleUrl>
+    <LineString>
+      <tessellate>1</tessellate>
+      <coordinates>-83.125,42.47916666666667,0 -86.125,39.604167,0</coordinates>
+    </LineString>
+  </Placemark>
+  <Placemark>
+    <name>Line to EN82js</name>
+    <styleUrl>#line</styleUrl>
+    <LineString>
+      <tessellate>1</tessellate>
+      <coordinates>-83.125,42.47916666666667,0 -83.208333,42.770833,0</coordinates>
+    </LineString>
+  </Placemark>
+  <Placemark>
+    <name>Line to FN41im</name>
+    <styleUrl>#line</styleUrl>
+    <LineString>
+      <tessellate>1</tessellate>
+      <coordinates>-83.125,42.47916666666667,0 -71.291667,41.520833,0</coordinates>
+    </LineString>
+  </Placemark>
+  <Placemark>
+    <name>Line to EN62WT</name>
+    <styleUrl>#line</styleUrl>
+    <LineString>
+      <tessellate>1</tessellate>
+      <coordinates>-83.125,42.47916666666667,0 -86.125,42.8125,0</coordinates>
+    </LineString>
+  </Placemark>
+  <Placemark>
+    <name>Line to EN90LP</name>
+    <styleUrl>#line</styleUrl>
+    <LineString>
+      <tessellate>1</tessellate>
+      <coordinates>-83.125,42.47916666666667,0 -81.041667,40.645833,0</coordinates>
+    </LineString>
+  </Placemark>
+  <Placemark>
+    <name>Line to FM06jc</name>
+    <styleUrl>#line</styleUrl>
+    <LineString>
+      <tessellate>1</tessellate>
+      <coordinates>-83.125,42.47916666666667,0 -79.208333,36.104167,0</coordinates>
+    </LineString>
+  </Placemark>
+  <Placemark>
+    <name>Line to FN01ku</name>
+    <styleUrl>#line</styleUrl>
+    <LineString>
+      <tessellate>1</tessellate>
+      <coordinates>-83.125,42.47916666666667,0 -79.125,41.854167,0</coordinates>
+    </LineString>
+  </Placemark>
+  <Placemark>
+    <name>Line to EN90hu</name>
+    <styleUrl>#line</styleUrl>
+    <LineString>
+      <tessellate>1</tessellate>
+      <coordinates>-83.125,42.47916666666667,0 -81.375,40.854167,0</coordinates>
+    </LineString>
+  </Placemark>
+  <Placemark>
+    <name>Line to FN20bh</name>
+    <styleUrl>#line</styleUrl>
+    <LineString>
+      <tessellate>1</tessellate>
+      <coordinates>-83.125,42.47916666666667,0 -75.875,40.3125,0</coordinates>
+    </LineString>
+  </Placemark>
+  <Placemark>
+    <name>Line to EM75LE</name>
+    <styleUrl>#line</styleUrl>
+    <LineString>
+      <tessellate>1</tessellate>
+      <coordinates>-83.125,42.47916666666667,0 -85.041667,35.1875,0</coordinates>
+    </LineString>
+  </Placemark>
+  <Placemark>
+    <name>Line to FN04ui</name>
+    <styleUrl>#line</styleUrl>
+    <LineString>
+      <tessellate>1</tessellate>
+      <coordinates>-83.125,42.47916666666667,0 -78.291667,44.354167,0</coordinates>
+    </LineString>
+  </Placemark>
+  <Placemark>
+    <name>Line to EN82ft</name>
+    <styleUrl>#line</styleUrl>
+    <LineString>
+      <tessellate>1</tessellate>
+      <coordinates>-83.125,42.47916666666667,0 -83.541667,42.8125,0</coordinates>
+    </LineString>
+  </Placemark>
+  <Placemark>
+    <name>Line to FM19sb</name>
+    <styleUrl>#line</styleUrl>
+    <LineString>
+      <tessellate>1</tessellate>
+      <coordinates>-83.125,42.47916666666667,0 -76.458333,39.0625,0</coordinates>
+    </LineString>
+  </Placemark>
+  </Folder>
+</Document>
+</kml>

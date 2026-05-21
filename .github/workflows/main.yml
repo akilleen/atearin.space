@@ -5,26 +5,30 @@ on:
     branches: [ main ]
   workflow_dispatch:
 
+permissions:
+  contents: read
+
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
-        with: 
+      - uses: actions/checkout@f43a0e5ff2bd294095638e18286ca9a3d1956744 # v3
+        with:
           submodules: true
-        
+          persist-credentials: false
+
       - name: Install Hugo
-        uses: peaceiris/actions-hugo@v2
+        uses: peaceiris/actions-hugo@16361eb4acea8698b220b76c0d4e84e1fd22c61d # v2
         with:
           hugo-version: 0.161.1
           extended: true
 
       - name: Run Hugo
         run: hugo --logLevel info
-      
+
       - name: Deploy via WebDAV
-        uses: XPH0816/webdav-deploy-action@v0.3
+        uses: XPH0816/webdav-deploy-action@dacd363983664b11c42c281bf5f0d6668b5b302a # v0.3
         with:
           url: ${{ secrets.WEBDAV_URL }}
           username: ${{ secrets.WEBDAV_USER }}

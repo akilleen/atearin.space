@@ -1,0 +1,23 @@
+{{ $file := .Get "file" }}
+{{ $columns := .Get "columns" | default "date,time,call,band,mode,rst" }}
+{{ $caption := .Get "caption" | default "Logbook" }}
+{{ $class := .Get "class" | default "" }}
+
+{{ if not $file }}
+  {{ if hugo.IsDevelopment }}
+    <div class="ham-adif-table ham-adif-table--error">
+      <p>⚠️ adif-table shortcode: required parameter <code>file</code> is missing.</p>
+    </div>
+  {{ end }}
+{{ else }}
+<div
+  class="ham-adif-table{{ with $class }} {{ . }}{{ end }}"
+  data-adif-url="{{ $file }}"
+  data-columns="{{ $columns }}"
+  data-caption="{{ $caption }}"
+  aria-live="polite"
+>
+  <p>Loading log…</p>
+  <noscript>This log table requires JavaScript to display.</noscript>
+</div>
+{{ end }}
