@@ -219,20 +219,20 @@ def main():
         print('Error: no MY_LAT/MY_LON or MY_GRIDSQUARE in first record.', file=sys.stderr)
         sys.exit(1)
 
-    activation_label = first.get('MY_SIG_INFO') or first.get('STATION_CALLSIGN') or 'Activation Site'
+    activation_label = first.get('MY_SIG_INFO') or 'Activation Site'
 
     contacts = []
     skipped = 0
-    for record in records:
+    for i, record in enumerate(records, start=1):
         fields = {k: v for k, v in record}
-        call = fields.get('CALL', 'Unknown')
+        label = fields.get('GRIDSQUARE') or f'Contact {i}'
         coords = best_coords(fields)
         if not coords:
             skipped += 1
-            print(f'Warning: no location for {call} — skipping', file=sys.stderr)
+            print(f'Warning: no location for contact {i} — skipping', file=sys.stderr)
             continue
         contacts.append({
-            'call': call,
+            'call': label,
             'lat': round(coords[0], 6),
             'lon': round(coords[1], 6),
             'description': format_description(fields),

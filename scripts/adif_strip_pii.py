@@ -33,7 +33,6 @@ from pathlib import Path
 # MY_SIG_INFO / SIG_INFO hold public POTA/SOTA references (e.g. "K-4564"), not PII.
 # STATE is a two-letter abbreviation — coarse enough to retain.
 SAFE_FIELDS = {
-    "CALL",
     "QSO_DATE",
     "QSO_DATE_OFF",
     "TIME_ON",
@@ -46,8 +45,6 @@ SAFE_FIELDS = {
     "SUBMODE",
     "RST_SENT",
     "RST_RCVD",
-    "STATION_CALLSIGN",
-    "MY_CALL",
     "MY_SIG",
     "MY_SIG_INFO",
     "SIG",

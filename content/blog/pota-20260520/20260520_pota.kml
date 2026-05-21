@@ -18,253 +18,253 @@
     <name>US-3313</name>
     <styleUrl>#activation-site</styleUrl>
     <Point>
-      <coordinates>-83.13833333333334,42.47168333333333,0</coordinates>
+      <coordinates>-83.125,42.47916666666667,0</coordinates>
     </Point>
   </Placemark>
   </Folder>
 
   <Folder><name>Contacts</name>
   <Placemark>
-    <name>AC1RH</name>
+    <name>FN42hv</name>
     <description><![CDATA[<b>Date:</b> 2026-05-20<br/><b>Time:</b> 14:06Z<br/><b>Band:</b> 40m<br/><b>Mode:</b> SSB<br/><b>RST Sent:</b> 55<br/><b>RST Rcvd:</b> 43<br/><b>POTA/SOTA:</b> US-8023]]></description>
     <styleUrl>#contact</styleUrl>
     <Point>
-      <coordinates>-71.3359,42.9006,0</coordinates>
+      <coordinates>-71.375,42.895833,0</coordinates>
     </Point>
   </Placemark>
   <Placemark>
-    <name>K3WD</name>
+    <name>FM19eg</name>
     <description><![CDATA[<b>Date:</b> 2026-05-20<br/><b>Time:</b> 14:20Z<br/><b>Band:</b> 40m<br/><b>Mode:</b> SSB<br/><b>RST Sent:</b> 55<br/><b>RST Rcvd:</b> 57]]></description>
     <styleUrl>#contact</styleUrl>
     <Point>
-      <coordinates>-77.655067,39.281333,0</coordinates>
+      <coordinates>-77.625,39.270833,0</coordinates>
     </Point>
   </Placemark>
   <Placemark>
-    <name>K9ICP</name>
+    <name>EM69wo</name>
     <description><![CDATA[<b>Date:</b> 2026-05-20<br/><b>Time:</b> 14:22Z<br/><b>Band:</b> 40m<br/><b>Mode:</b> SSB<br/><b>RST Sent:</b> 57<br/><b>RST Rcvd:</b> 55]]></description>
     <styleUrl>#contact</styleUrl>
     <Point>
-      <coordinates>-86.120317,39.621317,0</coordinates>
+      <coordinates>-86.125,39.604167,0</coordinates>
     </Point>
   </Placemark>
   <Placemark>
-    <name>WB8FIS</name>
+    <name>EN82js</name>
     <description><![CDATA[<b>Date:</b> 2026-05-20<br/><b>Time:</b> 14:30Z<br/><b>Band:</b> 40m<br/><b>Mode:</b> SSB<br/><b>RST Sent:</b> 59<br/><b>RST Rcvd:</b> 55<br/><b>POTA/SOTA:</b> US-3321]]></description>
     <styleUrl>#contact</styleUrl>
     <Point>
-      <coordinates>-83.245067,42.783867,0</coordinates>
+      <coordinates>-83.208333,42.770833,0</coordinates>
     </Point>
   </Placemark>
   <Placemark>
-    <name>KC1ZBU</name>
+    <name>FN41im</name>
     <description><![CDATA[<b>Date:</b> 2026-05-20<br/><b>Time:</b> 14:37Z<br/><b>Band:</b> 20m<br/><b>Mode:</b> SSB<br/><b>RST Sent:</b> 55<br/><b>RST Rcvd:</b> 53<br/><b>POTA/SOTA:</b> US-11495]]></description>
     <styleUrl>#contact</styleUrl>
     <Point>
-      <coordinates>-71.2868,41.516867,0</coordinates>
+      <coordinates>-71.291667,41.520833,0</coordinates>
     </Point>
   </Placemark>
   <Placemark>
-    <name>K9OB</name>
+    <name>EN62WT32</name>
     <description><![CDATA[<b>Date:</b> 2026-05-20<br/><b>Time:</b> 14:44Z<br/><b>Band:</b> 40m<br/><b>Mode:</b> SSB<br/><b>RST Sent:</b> 59<br/><b>RST Rcvd:</b> 58]]></description>
     <styleUrl>#contact</styleUrl>
     <Point>
-      <coordinates>-86.1337,42.801567,0</coordinates>
+      <coordinates>-86.125,42.8125,0</coordinates>
     </Point>
   </Placemark>
   <Placemark>
-    <name>K8WAG</name>
+    <name>EN90LP89</name>
     <description><![CDATA[<b>Date:</b> 2026-05-20<br/><b>Time:</b> 14:45Z<br/><b>Band:</b> 40m<br/><b>Mode:</b> SSB<br/><b>RST Sent:</b> 59<br/><b>RST Rcvd:</b> 55]]></description>
     <styleUrl>#contact</styleUrl>
     <Point>
-      <coordinates>-81.0111,40.666217,0</coordinates>
+      <coordinates>-81.041667,40.645833,0</coordinates>
     </Point>
   </Placemark>
   <Placemark>
-    <name>KE5ABB</name>
+    <name>FM06jc</name>
     <description><![CDATA[<b>Date:</b> 2026-05-20<br/><b>Time:</b> 14:46Z<br/><b>Band:</b> 40m<br/><b>Mode:</b> SSB<br/><b>RST Sent:</b> 52<br/><b>RST Rcvd:</b> 52<br/><b>POTA/SOTA:</b> US-1356]]></description>
     <styleUrl>#contact</styleUrl>
     <Point>
-      <coordinates>-79.218067,36.10415,0</coordinates>
+      <coordinates>-79.208333,36.104167,0</coordinates>
     </Point>
   </Placemark>
   <Placemark>
-    <name>N3MWS</name>
+    <name>FN01ku</name>
     <description><![CDATA[<b>Date:</b> 2026-05-20<br/><b>Time:</b> 14:47Z<br/><b>Band:</b> 40m<br/><b>Mode:</b> SSB<br/><b>RST Sent:</b> 59<br/><b>RST Rcvd:</b> 55]]></description>
     <styleUrl>#contact</styleUrl>
     <Point>
-      <coordinates>-79.145283,41.861733,0</coordinates>
+      <coordinates>-79.125,41.854167,0</coordinates>
     </Point>
   </Placemark>
   <Placemark>
-    <name>AD8KB</name>
+    <name>EN90hu</name>
     <description><![CDATA[<b>Date:</b> 2026-05-20<br/><b>Time:</b> 14:47Z<br/><b>Band:</b> 40m<br/><b>Mode:</b> SSB<br/><b>RST Sent:</b> 55<br/><b>RST Rcvd:</b> 55]]></description>
     <styleUrl>#contact</styleUrl>
     <Point>
-      <coordinates>-81.346583,40.8711,0</coordinates>
+      <coordinates>-81.375,40.854167,0</coordinates>
     </Point>
   </Placemark>
   <Placemark>
-    <name>N3FMC</name>
+    <name>FN20bh</name>
     <description><![CDATA[<b>Date:</b> 2026-05-20<br/><b>Time:</b> 14:48Z<br/><b>Band:</b> 40m<br/><b>Mode:</b> SSB<br/><b>RST Sent:</b> 59<br/><b>RST Rcvd:</b> 57]]></description>
     <styleUrl>#contact</styleUrl>
     <Point>
-      <coordinates>-75.846267,40.311667,0</coordinates>
+      <coordinates>-75.875,40.3125,0</coordinates>
     </Point>
   </Placemark>
   <Placemark>
-    <name>W4WTS</name>
+    <name>EM75LE13</name>
     <description><![CDATA[<b>Date:</b> 2026-05-20<br/><b>Time:</b> 14:59Z<br/><b>Band:</b> 40m<br/><b>Mode:</b> SSB<br/><b>RST Sent:</b> 59<br/><b>RST Rcvd:</b> 55]]></description>
     <styleUrl>#contact</styleUrl>
     <Point>
-      <coordinates>-85.073583,35.183117,0</coordinates>
+      <coordinates>-85.041667,35.1875,0</coordinates>
     </Point>
   </Placemark>
   <Placemark>
-    <name>VE3SRW</name>
+    <name>FN04ui</name>
     <description><![CDATA[<b>Date:</b> 2026-05-20<br/><b>Time:</b> 14:59Z<br/><b>Band:</b> 40m<br/><b>Mode:</b> SSB<br/><b>RST Sent:</b> 57<br/><b>RST Rcvd:</b> 53]]></description>
     <styleUrl>#contact</styleUrl>
     <Point>
-      <coordinates>-78.320967,44.339783,0</coordinates>
+      <coordinates>-78.291667,44.354167,0</coordinates>
     </Point>
   </Placemark>
   <Placemark>
-    <name>K8EN</name>
+    <name>EN82ft</name>
     <description><![CDATA[<b>Date:</b> 2026-05-20<br/><b>Time:</b> 14:51Z<br/><b>Band:</b> 40m<br/><b>Mode:</b> SSB<br/><b>RST Sent:</b> 59<br/><b>RST Rcvd:</b> 59]]></description>
     <styleUrl>#contact</styleUrl>
     <Point>
-      <coordinates>-83.510017,42.811083,0</coordinates>
+      <coordinates>-83.541667,42.8125,0</coordinates>
     </Point>
   </Placemark>
   <Placemark>
-    <name>W3BAY</name>
+    <name>FM19sb</name>
     <description><![CDATA[<b>Date:</b> 2026-05-20<br/><b>Time:</b> 14:52Z<br/><b>Band:</b> 40m<br/><b>Mode:</b> SSB<br/><b>RST Sent:</b> 51<br/><b>RST Rcvd:</b> 51<br/><b>POTA/SOTA:</b> US-1595]]></description>
     <styleUrl>#contact</styleUrl>
     <Point>
-      <coordinates>-76.4411,39.046133,0</coordinates>
+      <coordinates>-76.458333,39.0625,0</coordinates>
     </Point>
   </Placemark>
   </Folder>
 
   <Folder><name>Lines</name>
   <Placemark>
-    <name>Line to AC1RH</name>
+    <name>Line to FN42hv</name>
     <styleUrl>#line</styleUrl>
     <LineString>
       <tessellate>1</tessellate>
-      <coordinates>-83.13833333333334,42.47168333333333,0 -71.3359,42.9006,0</coordinates>
+      <coordinates>-83.125,42.47916666666667,0 -71.375,42.895833,0</coordinates>
     </LineString>
   </Placemark>
   <Placemark>
-    <name>Line to K3WD</name>
+    <name>Line to FM19eg</name>
     <styleUrl>#line</styleUrl>
     <LineString>
       <tessellate>1</tessellate>
-      <coordinates>-83.13833333333334,42.47168333333333,0 -77.655067,39.281333,0</coordinates>
+      <coordinates>-83.125,42.47916666666667,0 -77.625,39.270833,0</coordinates>
     </LineString>
   </Placemark>
   <Placemark>
-    <name>Line to K9ICP</name>
+    <name>Line to EM69wo</name>
     <styleUrl>#line</styleUrl>
     <LineString>
       <tessellate>1</tessellate>
-      <coordinates>-83.13833333333334,42.47168333333333,0 -86.120317,39.621317,0</coordinates>
+      <coordinates>-83.125,42.47916666666667,0 -86.125,39.604167,0</coordinates>
     </LineString>
   </Placemark>
   <Placemark>
-    <name>Line to WB8FIS</name>
+    <name>Line to EN82js</name>
     <styleUrl>#line</styleUrl>
     <LineString>
       <tessellate>1</tessellate>
-      <coordinates>-83.13833333333334,42.47168333333333,0 -83.245067,42.783867,0</coordinates>
+      <coordinates>-83.125,42.47916666666667,0 -83.208333,42.770833,0</coordinates>
     </LineString>
   </Placemark>
   <Placemark>
-    <name>Line to KC1ZBU</name>
+    <name>Line to FN41im</name>
     <styleUrl>#line</styleUrl>
     <LineString>
       <tessellate>1</tessellate>
-      <coordinates>-83.13833333333334,42.47168333333333,0 -71.2868,41.516867,0</coordinates>
+      <coordinates>-83.125,42.47916666666667,0 -71.291667,41.520833,0</coordinates>
     </LineString>
   </Placemark>
   <Placemark>
-    <name>Line to K9OB</name>
+    <name>Line to EN62WT32</name>
     <styleUrl>#line</styleUrl>
     <LineString>
       <tessellate>1</tessellate>
-      <coordinates>-83.13833333333334,42.47168333333333,0 -86.1337,42.801567,0</coordinates>
+      <coordinates>-83.125,42.47916666666667,0 -86.125,42.8125,0</coordinates>
     </LineString>
   </Placemark>
   <Placemark>
-    <name>Line to K8WAG</name>
+    <name>Line to EN90LP89</name>
     <styleUrl>#line</styleUrl>
     <LineString>
       <tessellate>1</tessellate>
-      <coordinates>-83.13833333333334,42.47168333333333,0 -81.0111,40.666217,0</coordinates>
+      <coordinates>-83.125,42.47916666666667,0 -81.041667,40.645833,0</coordinates>
     </LineString>
   </Placemark>
   <Placemark>
-    <name>Line to KE5ABB</name>
+    <name>Line to FM06jc</name>
     <styleUrl>#line</styleUrl>
     <LineString>
       <tessellate>1</tessellate>
-      <coordinates>-83.13833333333334,42.47168333333333,0 -79.218067,36.10415,0</coordinates>
+      <coordinates>-83.125,42.47916666666667,0 -79.208333,36.104167,0</coordinates>
     </LineString>
   </Placemark>
   <Placemark>
-    <name>Line to N3MWS</name>
+    <name>Line to FN01ku</name>
     <styleUrl>#line</styleUrl>
     <LineString>
       <tessellate>1</tessellate>
-      <coordinates>-83.13833333333334,42.47168333333333,0 -79.145283,41.861733,0</coordinates>
+      <coordinates>-83.125,42.47916666666667,0 -79.125,41.854167,0</coordinates>
     </LineString>
   </Placemark>
   <Placemark>
-    <name>Line to AD8KB</name>
+    <name>Line to EN90hu</name>
     <styleUrl>#line</styleUrl>
     <LineString>
       <tessellate>1</tessellate>
-      <coordinates>-83.13833333333334,42.47168333333333,0 -81.346583,40.8711,0</coordinates>
+      <coordinates>-83.125,42.47916666666667,0 -81.375,40.854167,0</coordinates>
     </LineString>
   </Placemark>
   <Placemark>
-    <name>Line to N3FMC</name>
+    <name>Line to FN20bh</name>
     <styleUrl>#line</styleUrl>
     <LineString>
       <tessellate>1</tessellate>
-      <coordinates>-83.13833333333334,42.47168333333333,0 -75.846267,40.311667,0</coordinates>
+      <coordinates>-83.125,42.47916666666667,0 -75.875,40.3125,0</coordinates>
     </LineString>
   </Placemark>
   <Placemark>
-    <name>Line to W4WTS</name>
+    <name>Line to EM75LE13</name>
     <styleUrl>#line</styleUrl>
     <LineString>
       <tessellate>1</tessellate>
-      <coordinates>-83.13833333333334,42.47168333333333,0 -85.073583,35.183117,0</coordinates>
+      <coordinates>-83.125,42.47916666666667,0 -85.041667,35.1875,0</coordinates>
     </LineString>
   </Placemark>
   <Placemark>
-    <name>Line to VE3SRW</name>
+    <name>Line to FN04ui</name>
     <styleUrl>#line</styleUrl>
     <LineString>
       <tessellate>1</tessellate>
-      <coordinates>-83.13833333333334,42.47168333333333,0 -78.320967,44.339783,0</coordinates>
+      <coordinates>-83.125,42.47916666666667,0 -78.291667,44.354167,0</coordinates>
     </LineString>
   </Placemark>
   <Placemark>
-    <name>Line to K8EN</name>
+    <name>Line to EN82ft</name>
     <styleUrl>#line</styleUrl>
     <LineString>
       <tessellate>1</tessellate>
-      <coordinates>-83.13833333333334,42.47168333333333,0 -83.510017,42.811083,0</coordinates>
+      <coordinates>-83.125,42.47916666666667,0 -83.541667,42.8125,0</coordinates>
     </LineString>
   </Placemark>
   <Placemark>
-    <name>Line to W3BAY</name>
+    <name>Line to FM19sb</name>
     <styleUrl>#line</styleUrl>
     <LineString>
       <tessellate>1</tessellate>
-      <coordinates>-83.13833333333334,42.47168333333333,0 -76.4411,39.046133,0</coordinates>
+      <coordinates>-83.125,42.47916666666667,0 -76.458333,39.0625,0</coordinates>
     </LineString>
   </Placemark>
   </Folder>
